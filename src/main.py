@@ -81,7 +81,7 @@ def validate(epoch):
     print("Accuracy = {:.2f}".format(epoch_accuracy))
 
     # now save the model if it has better accuracy than the best model seen so forward
-    if val_accuracy > best_accuracy:
+    if epoch_accuracy > best_accuracy:
         best_accuracy = epoch_accuracy
         # save the model
         torch.save(neuralNet.state_dict(),'saved_model.pth')
