@@ -1,0 +1,14 @@
+Normal
+[mean(Age) std(Age) median(Age) min(Age) max(Age)]
+57.8284   11.6651   57.0000   35.0000   88.0000
+
+Cancer
+61.3971   12.7968   62.0000   31.0000   91.0000
+
+Benign 
+53.1036   12.0260   52.0000   27.0000   89.0000
+
+
+
+Benign images with 1 year old age entry
+http://www.eng.usf.edu/cvprg/Mammography/DDSM/thumbnails/benigns/benign_08/case1735/A-1735-1.html
