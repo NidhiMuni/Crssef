@@ -50,13 +50,13 @@ def train(epoch):
         pred = scores.data.max(1)[1] # get the index of the max log-probability
         correct += pred.eq(label.data).cpu().sum()
 
-        if iteration % batch_size == 0:
-            print('Training Epoch: {} [{}/{} ({:.0f}%)]\tLoss: {:.6f}'.format(
-                epoch, (iteration+1) * len(data), len(loader_train.dataset),
-                100. * (iteration+1)*len(data) / len(loader_train.dataset), loss.item()))
+        # if iteration % batch_size == 0:
+        #     print('Training Epoch: {} [{}/{} ({:.0f}%)]\tLoss: {:.6f}'.format(
+        #         epoch, (iteration+1) * len(data), len(loader_train.dataset),
+        #         100. * (iteration+1)*len(data) / len(loader_train.dataset), loss.item()))
 
     train_accuracy = correct / float(len(loader_train.dataset))
-    print("Training accuracy ({:.2f}%)".format(100*train_accuracy))
+    print("\tTraining accuracy ({:.2f}%)".format(100*train_accuracy))
     return (train_accuracy*100.0)
 
 def validate(epoch):
@@ -76,9 +76,9 @@ def validate(epoch):
         pred = scores.data.max(1)[1] # got the indices of the maximum, match them
         correct += pred.eq(label.data).cpu().sum()
 
-    print("Predicted {} out of {}".format(correct, iteration * batch_size))
+    print("\tPredicted {} out of {}".format(epoch, correct, iteration * batch_size))
     epoch_accuracy = correct / (iteration * batch_size) * 100
-    print("Accuracy = {:.2f}".format(epoch_accuracy))
+    print("\tAccuracy = {:.2f}%".format(epoch, epoch_accuracy))
 
     # now save the model if it has better accuracy than the best model seen so forward
     if epoch_accuracy > best_accuracy:
@@ -133,8 +133,10 @@ optimizer = optim.SGD(neuralNet.parameters(), lr=0.001, momentum=0.9)
 
 
 for epoch in range(epochCount):
+    print("Epoch {}".format(epoch))
     train(epoch)
     validate(epoch)
+    print("\t-----------------")
 
 print(loss_list)
 
